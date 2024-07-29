@@ -1,0 +1,22 @@
+services:
+  php:
+    build: .
+    volumes:
+      - ./public:/var/www/html
+    ports:
+      # Add the port that WP will listen on
+      - "80:80"
+    depends_on:
+      - db
+
+  db:
+    image: mysql:lts
+    environment:
+      # Put a more serious password and DB info
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: my_database
+      MYSQL_USER: my_user
+      MYSQL_PASSWORD: my_password
+    volumes:
+      - ./config:/var/lib/mysql
+

@@ -1,0 +1,5 @@
+config/*
+public/*
+
+!config/.empty
+!public/.empty
